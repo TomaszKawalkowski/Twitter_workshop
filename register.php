@@ -1,20 +1,17 @@
 <?php
-
 require_once('src/connection.php');
 session_start();
 if ($_SERVER["REQUEST_METHOD"]=="POST"){
-    $user = User::logIn($_POST['mail'], $_POST['password']);
-    var_dump($user);
-    var_dump ($_POST['mail']);
-    var_dump ($_POST['password']);
-    if ($user != false){
-        $_SESSION["user"]= $user;
-        header("location: main.php");
+    $newUser = User::register($_POST['email'], $_POST['password'], $_POST['password2'], $_POST['description']);
+    if ($newUser != false){
+        $_SESSION['user'] = $newUser;
+        header('location: main.php');
     }
-    echo("Zly login lub haslo");
+    echo "Blad rejestracji";
 }
-?>
 
+
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -30,8 +27,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
@@ -42,18 +39,19 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
 <div style="height:100px; background-color:orange"></div>
+<div style="height:30px; "></div>
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-<div class="form-group">
-<form action = 'login.php' method='post'>
-    <input class="form-control" type="text" name="mail" placeholder="Enter mail">
-    <input class="form-control" type="password" name="password" placeholder="Enter password">
-    <input class="form-control" type="submit" value="login">
-</form>
+<form method="post" action="register.php">
+    <input type="text" name = "email" placeholder="Enter yor email">
+    <input type="password" name = "password" placeholder="Enter yor password">
+    <input type="password" name = "password2" placeholder="Enter yor password">
+    <input type="text" name = "description" placeholder="Desribe your self">
+    <input type ="submit">
+    </div>
 </div>
     <div class="col-md-4"></div>
 </div>
-</div>
+</form>
 </body>
-</html>

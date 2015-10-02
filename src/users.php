@@ -63,6 +63,18 @@ class User
         return false;
     }
 
+    static public function getUserById($id){
+        $sql = "SELECT * FROM Users WHERE user_id = $id";
+        $result = self::$conn->query($sql);
+        if($result == true){
+            if($result->num_rows == 1){
+                $row = $result->fetch_assoc();
+                $loggedUser = new User ($row['user_id'], $row['email'], $row['description']);
+                return $loggedUser;
+            }
+        }
+    }
+
     public function __construct($newId, $newEmail, $newDescription)
     {
         $this->id = $newId;
@@ -97,7 +109,7 @@ class User
 
     public function getEmail()
     {
-        return $this->description;
+        return $this->email;
     }
 
     public function setDescription($newDescription)
@@ -123,6 +135,22 @@ class User
     public function getAllComents(){
         $ret = [];
         //TODO: aFTER IMPLEMENTING COMMENT ADD FUNCTIONALY LOAD ALL commentd
+    }
+    public function getAllUsers(){
+        $ret = [];
+        $sql = "SELECT * FROM Users";
+        var_dump($sql);
+        $result = self::$conn->query($sql);
+        if($result == true){
+            if ($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    $loadedUser = new User($row['user_id'], $row['email'], $row['description']);
+                    $ret[] = $loadedUser;
+                }
+            }
+
+        }
+        return $ret;
     }
 }
 
