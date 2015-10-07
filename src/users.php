@@ -139,7 +139,7 @@ class User
     public function getAllUsers(){
         $ret = [];
         $sql = "SELECT * FROM Users";
-        var_dump($sql);
+
         $result = self::$conn->query($sql);
         if($result == true){
             if ($result->num_rows > 0){

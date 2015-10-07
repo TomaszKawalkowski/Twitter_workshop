@@ -38,20 +38,67 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
-<div style="height:100px; background-color:orange"></div>
-<div style="height:30px; "></div>
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-<form method="post" action="register.php">
-    <input type="text" name = "email" placeholder="Enter yor email">
-    <input type="password" name = "password" placeholder="Enter yor password">
-    <input type="password" name = "password2" placeholder="Enter yor password">
-    <input type="text" name = "description" placeholder="Desribe your self">
-    <input type ="submit">
+<nav class="navbar navbar-inverse navbar-fixed-top " >
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="main.php">Welcome to Dweeter</a>
+        </div>
+        <div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav" >
+                    <li><a href="main.php">Main Page</a></li>
+                    <li><a href="logout.php">Logout</a></li>
+                    <li><a href="showuser.php">User Page</a></li>
+                    <li><a href="register.php">Register</a></li>
+                    <li><a href="login.php">Login</a></li>
+
+
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
-    <div class="col-md-4"></div>
-</div>
-</form>
+</nav>
+<div style="height:60px"></div>
+<div class="container">
+    <div style="height:150px; background-color:dimgray; text-align: center; color: beige; padding: 15px;" ><H1> WELCOME TO DWEETER !!!</H1><H3>Please Register</H3></div>
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <form method="post" action="register.php">
+                    <div class="form-group">
+
+                        <input type="text" name = "email" placeholder="Enter yor email" class="form-control" id="usr">
+                        <input type="password" name = "password" placeholder="Enter yor password" class="form-control" id="pwd">
+                        <input type="password" name = "password2" placeholder="ReEnter yor password" class="form-control" id="pwd">
+                        <input type="text"  name = "description" placeholder="Desribe your self" class="form-control" id="usr">
+                    </div>
+
+                    <button type="submit" class="btn btn-info" style ="text-align: center; width: 100%;">REGISTER</button>
+            </div>
+            </div>
+        </div>
+
+                </form>
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div style="height:80px; text-align: center; padding:5px; color: dimgray;">
+                 <strong> OR </strong><a href="login.php"><button type="button"
+                 class="btn btn-info" style="width:100%">LOGIN</button></a></div>
+        <div class="col-md-4"></div>
+        </div>
+    </div>
+
+    </div>
+
+
+
 </body>

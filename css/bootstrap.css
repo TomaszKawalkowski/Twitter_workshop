@@ -11,6 +11,11 @@ html {
 }
 body {
   margin: 0;
+
+}
+text{
+  color:beige;
+  text-align: center;
 }
 article,
 aside,

@@ -6,6 +6,7 @@
  * Time: 11:13
  */
 include_once('users.php');
+include_once('tweets.php');
 $userName = "root";
 $pass = "coderslab";
 $host = "localhost";
@@ -20,6 +21,7 @@ if($conn ==false){
 
 
 User::setConnection($conn);
+Tweet::setConnection($conn);
 
 
 //$createdUser = User::register('romek', 'dudek', 'dudek', 'kalosz');
